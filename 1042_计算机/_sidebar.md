@@ -1,0 +1,18 @@
+# 计算机
+
+- folds
+  - [104200_计算机行业标准](104200_计算机行业标准/_sidebar.md)
+  - [104201_编程规范](104201_编程规范/_sidebar.md)
+  - [104209_工具链](104209_工具链/_sidebar.md)
+  - [104210_html教程](104210_html教程/_sidebar.md)
+  - [104211_web表单教程](104211_web表单教程/_sidebar.md)
+  - [104212_css教程](104212_css教程/_sidebar.md)
+  - [104220_JavaScript教程](104220_JavaScript教程/_sidebar.md)
+  - [104222_react教程](104222_react教程/_sidebar.md)
+  - [104225_next教程](104225_next教程/_sidebar.md)
+  - [104228_mapbox教程](104228_mapbox教程/_sidebar.md)
+  - [104235_node教程](104235_node教程/_sidebar.md)
+  - [104240_python教程](104240_python教程/_sidebar.md)
+  - [104241_gdal教程](104241_gdal教程/_sidebar.md)
+  - [104242_opencv教程](104242_opencv教程/_sidebar.md)
+  - [104260_postgresql教程](104260_postgresql教程/_sidebar.md)

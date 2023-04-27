@@ -1,0 +1,308 @@
+---
+id: 1a108025-b0cf-4062-8935-4097fd556546
+---
+
+# react 最佳实践
+
+## useEffect
+
+### 闭包问题
+
+**具体表现**
+
+```typescript
+// 在 setInterval 中使用 useState
+// 由于函数闭包, state 永远是定义时的快照
+// 如下例, count 永远指向 1
+const App = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(count + 1); // count 永远获取的是 0
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return <h1>{count}</h1>;
+};
+```
+
+**数组依赖**
+
+```typescript
+// 监听 count 变化
+// 不断创建新的 setInterval
+// 但不断清除 setInterval, 耗费性能
+const App = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(count + 1); // count 永远获取的是 0
+    }, 1000);
+    return () => clearInterval(id);
+  }, [count]);
+  return <h1>{count}</h1>;
+};
+```
+
+**使用 updater function**
+
+```typescript
+// 使用 updater function 获取最新的 state 值;
+// 不用清除 setInterval
+// 但该方法无法获取并使用其他属性
+const App = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount((c) => c + 1); // count 永远获取的是 0
+    }, 1000);
+  }, []);
+  return <h1>{count}</h1>;
+};
+```
+
+**使用 ref**
+
+```typescript
+// 使用 ref 存储操作 state 的操作
+// 不用清除 setInterval
+// 可以使用组件中的其余属性
+const App = () => {
+  const [count, setCount] = useState(0);
+  const interval = useRef<() => void>();
+  interval.current = () => {
+    setCount(count + 1);
+  };
+  useEffect(() => {
+    const id = setInterval(() => {
+      interval.current!();
+    }, 1000);
+  }, []);
+  return <h1>{count}</h1>;
+};
+```
+
+## 项目结构
+
+### 组件
+
+**原子组件**
+
+- 放置于 components 文件夹中;
+- 内部无逻辑实现;
+- 保留数据和逻辑接口;
+
+**业务组件**
+
+- 放置于 features 文件夹中;
+- 根据业务对原子组件进行逻辑上的封装;
+- 内部封装逻辑, 只保留数据接口;
+- 页面组件的一部分;
+
+**页面组件**
+
+- 放置于 pages 文件夹中;
+- 整个网页;
+
+### 组件结构
+
+**导出**
+
+```typescript
+// 使用命名导出
+export const App = () => {
+  return <></>;
+};
+// index.ts 中统一导出
+export { App } from "./app";
+```
+
+**组件内部顺序**
+
+- 文件内全局常量定义;
+- js in css 定义;
+- function;
+- 文件内非导出组件;
+- 文件导出组件;
+  - const/useState/useRef...;
+  - function;
+  - useEffect;
+  - return;
+
+### 中小型项目
+
+**项目结构**
+
+- asserts: 静态资源文件;
+- components: 全局共享组件;
+- hooks: 全局共享 hook;
+- pages: 功能文件夹;
+- stores: 全局状态变量;
+- test: 测试文件夹;
+- utils: 实用函数;
+- types: ts 类型;
+- routes: 路由;
+- config: 配置文件;
+
+**pages 文件夹**
+
+- 等效于一个独立的 src 文件;
+- 大部分代码储存在 pages 中;
+- 可以有自己的 components, hooks 等一些文件夹;
+  - 这些 components 或者 hooks 仅用于该页面;
+
+### 大型项目
+
+**大型项目**
+
+- asserts: 静态资源文件;
+- components: 全局共享组件;
+- features: 功能文件夹;
+- hooks: 全局共享 hook;
+- pages: 页面文件夹;
+- stores: 全局状态变量;
+- test: 测试文件夹;
+- utils: 全局函数
+- types: ts 类型;
+- routes: 路由;
+- config: 配置文件;
+
+**features 文件夹**
+
+- 应对 pages 文件夹冗余的问题;
+- 将功能相似的代码进行抽象;
+- features 文件夹与 pages 文件夹相同, 等效于一个独立的 src 文件;
+
+### index 文件用法
+
+**设计思想**
+
+- import 路径指向文件夹时, 优先寻找并访问其 index 文件;
+- 文件夹按需创建 index 文件;
+- 将文件夹内所有组件同一在 index 文件导出;
+- 使用组件时不需要具体到组件所在文件;
+
+```typescript
+// index.ts
+export { default as useData } from "./use_data";
+export { default as useKeys } from "./use_keys";
+// 使用文件
+import { useKeys } from "../../hooks";
+```
+
+## 组件
+
+### 弹窗
+
+**设计思想**
+
+- 单独设置一个组件存放弹窗;
+- 该组件接受一个作为弹窗的组件作为属性;
+- 使用 useState 确定该弹窗是否显示;
+
+### 不使用路由实现动态侧边栏
+
+```typescript
+// 显示 selectID 对应的面板
+const Item = ({ selectID, items }: AppProps2) => {
+  const panel = items.filter((value) => {
+    if (value.id !== selectID) {
+      return false;
+    }
+    return true;
+  });
+  return panel.length ? panel[0].panel : <></>;
+};
+
+const Sidebar = ({ items }) => {
+  const [showPanelID, setShowPanelID] = useState(""); // 表明当前面板 id
+  const [showItem, setShowItem] = useState(false); // 表明是否显示面板
+  // 生成侧边栏
+  const sidebarItems = items.map((value): JSX.Element => {
+    return (
+      <Tooltip placement="right" title={value.title} key={crypto.randomUUID()}>
+        <AsideItem
+          onClick={(e) => {
+            // 侧边栏组件切换逻辑
+            // 如果面板已经显示, 而且并切换到其他面板, 不做任何操作, 依旧显示面板
+            // 否则关闭该面板, 即多次点击同一侧边栏选项的情况
+            if (showItem && e.currentTarget.id !== showPanelID) {
+            } else {
+              setShowItem(!showItem);
+            }
+            // 如果多次点击同一侧边栏选项, 清空面板 id
+            // 否则将面板 id 设置为当前点击侧边栏选项
+            if (showPanelID === e.currentTarget.id) {
+              setShowPanelID("");
+            } else {
+              setShowPanelID(e.currentTarget.id);
+            }
+          }}
+        >
+          {value.icon}
+        </AsideItem>
+      </Tooltip>
+    );
+  });
+
+  return (
+    <>
+      <Aside>{sidebarItems}</Aside>
+      {showItem ? (
+        <PanelContainer style={{ borderRight: "1px solid #d9d9d9" }}>
+          <Item selectID={showPanelID} items={items} />
+        </PanelContainer>
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
+```
+
+### 创建 svg 组件
+
+**语法格式**
+
+```typescript
+// style 用于修改 svg 组件的大小和颜色
+const LayerOutlined: React.FC<{ style: React.CSSProperties }> = ({ style }) => {
+  return (
+    // span, 修改 svg 样式
+    // 设置 padding 和 lineHeight 重置样式
+    // fontSize 配合 svg 标签中的 width 和 height 修改 svg 大小
+    // color 修改 svg 颜色
+    // viewbox 设置 svg 显示区域, 这里和 antd 保持一致
+    // svg 中其他属性默认
+    <span
+      style={{ padding: "0px", lineHeight: "0px", fontSize: "14px", color: "#595959", ...style }}
+    >
+      <svg
+        className="icon"
+        viewBox="64 64 896 896"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        p-id="1394"
+        width="1em"
+        height="1em"
+      >
+        // svg 代码忽略
+      </svg>
+    </span>
+  );
+};
+```
+
+## 思想
+
+### 实时修改
+
+```typescript
+// 修改后的 state 只有在下一次渲染中才可以获取
+// 部分场景需要修改后立刻访问, 这时候不应使用 state 传递参数
+// 应将修改值直接作为逻辑函数的函数参数
+const [value, setValue] = useState(0);
+setValue(1);
+fn(value); // 修改值 1 只有在下一次渲染中才可以获取, 此时依旧为 0, 故发生错误
+fn(1); // 不使用 value, 直接将 1 传入 fn() 中
+```
