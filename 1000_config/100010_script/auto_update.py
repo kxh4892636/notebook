@@ -16,6 +16,10 @@ def auto_update_sidebar(root_dir: str) -> None:
             continue
         if '1000_config' in curDir:
             continue
+        if '.git' in curDir:
+            continue
+        if '.obsidian' in curDir:
+            continue
 
         if files:
             content = list()
@@ -102,7 +106,7 @@ def auto_update_index(root_dir: str) -> None:
 
             file_path = os.path.join(cur_dir, file).split(
                 '10_note')[-1].replace('\\', '/')
-            contents.append(file_path)
+            contents.append("."+file_path)
 
     contents = f'paths:{contents},'
     content_re = str()
@@ -186,7 +190,7 @@ def find_long_note(root_dir: str) -> None:
             continue
 
         for file in files:
-            if not file.endswith('.md') or file == '_sidebar.md' or file == 'README.md' or '1020' in cur_dir:
+            if not file.endswith('.md') or file == '_sidebar.md' or file == 'README.md' or '1020' in cur_dir or '.git' in cur_dir or '.obsidian' in cur_dir:
                 continue
 
             file_path = os.path.join(cur_dir, file)
