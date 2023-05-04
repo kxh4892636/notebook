@@ -4,6 +4,32 @@
 被迫 9116 的学术垃圾 🐟.
 
 ## 目录
+
+### .git
+
+
+### info
+
+
+### logs
+
+
+### refs
+
+- [origin](./.git/logs/refs/remotes/origin/_sidebar.md)
+
+### info
+
+
+### pack
+
+
+### refs
+
+- [origin](./.git/refs/remotes/origin/_sidebar.md)
+
+### tags
+
 - [themes](./.obsidian/themes/_sidebar.md)
 
 ### 1010_中转

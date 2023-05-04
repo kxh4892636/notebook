@@ -125,7 +125,7 @@ outputModel.stdout?.on("data", async (chunk) => {
   // ...
 });
 // 监听 stderr 异常输出
-outputModel.stdout?.on("data", async (chunk) => {
+outputModel.stderr?.on("data", async (chunk) => {
   const content = chunk.toString(); // chunk 为 buffer 类型
   // ...
 });
