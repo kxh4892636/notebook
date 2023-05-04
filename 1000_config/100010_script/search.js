@@ -257,14 +257,16 @@
               end = postContent.length;
             }
 
-            var matchContent =
-              "..." +
-              handlePostContent.substring(start, end).replace(regEx, function (word) {
-                return '<em class="search-keyword">' + word + "</em>";
-              }) +
-              "...";
+            if (handlePostContent) {
+              var matchContent =
+                "..." +
+                handlePostContent.substring(start, end).replace(regEx, function (word) {
+                  return '<em class="search-keyword">' + word + "</em>";
+                }) +
+                "...";
 
-            resultStr += matchContent;
+              resultStr += matchContent;
+            }
           }
         });
 

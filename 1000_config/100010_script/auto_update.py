@@ -106,7 +106,7 @@ def auto_update_index(root_dir: str) -> None:
 
             file_path = os.path.join(cur_dir, file).split(
                 '10_note')[-1].replace('\\', '/')
-            contents.append("."+file_path)
+            contents.append(file_path)
 
     contents = f'paths:{contents},'
     content_re = str()
