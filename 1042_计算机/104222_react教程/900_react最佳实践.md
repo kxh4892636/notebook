@@ -64,19 +64,18 @@ const App = () => {
 **使用 ref**
 
 ```typescript
-// 使用 ref 存储操作 state 的操作
+// 使用 ref 存储 count
 // 不用清除 setInterval
 // 可以使用组件中的其余属性
 const App = () => {
   const [count, setCount] = useState(0);
-  const interval = useRef<() => void>();
-  interval.current = () => {
-    setCount(count + 1);
-  };
+  const countRef = useRef(0);
+  countRef.current = count;
   useEffect(() => {
     const id = setInterval(() => {
-      interval.current!();
+      setCount(countRef.current + 1);
     }, 1000);
+    return () => clearInterval(id);
   }, []);
   return <h1>{count}</h1>;
 };

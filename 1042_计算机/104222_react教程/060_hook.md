@@ -43,7 +43,7 @@ const c = useMemo(() => a + b, [a, b]);
 // 尽量少的使用 useCallback
 // 只有组件被 memo 包裹, 且组件每个属性都使用 useCallback, useCallback 才会生效
 const func = useCallback(() => {
-  doSomething();
+  // ...
 }, []);
 const ExpensiveComponent = React.memo(({ func }) => {
   return <div onClick={func}>hello</div>;
