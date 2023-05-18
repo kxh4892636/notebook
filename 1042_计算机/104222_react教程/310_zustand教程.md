@@ -93,3 +93,43 @@ const App = () => {
   return <></>;
 };
 ```
+
+**zustand 的闭包问题**
+
+```typescript
+// store.tsx
+import { create } from "zustand";
+
+interface Store {
+  count: number;
+  setCount: (value: number) => void;
+  getCount: () => number;
+}
+
+export const useStore = create<Store>((set, get) => ({
+  count: 0,
+  setCount: (value: number) => {
+    set({
+      count: value,
+    });
+  },
+  getCount: () => get().count,
+}));
+
+// App.tsx
+const App = () => {
+  const count = useStore((state) => state.count);
+  const setCount = useStore((state) => state.setCount);
+  const getCount = useStore((state) => state.getCount);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(count + 1); // 由于闭包, count 无法获取最新的值
+      setCount(getCount() + 1); // 使用 zustand 中的 get() 函数可以获取最新的值
+    }, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return <h1>{count}</h1>;
+};
+```

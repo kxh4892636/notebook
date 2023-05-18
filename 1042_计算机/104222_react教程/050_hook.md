@@ -1,8 +1,20 @@
 ---
-id: 6f6a20ae-b4f2-4bf9-9efa-bb86018d8cd9
+id: d501f11a-92c3-4d85-92ed-1c500c5c713b
 ---
 
-# 逃生舱
+# hook
+
+## 基本概念
+
+**hook**
+
+- react 中的特殊函数;
+- 以 use 为前缀.
+
+**使用原则**
+
+- hook 只能定义在组件或 hook 的开头;
+- 不能定义在条件语句, 循环语句或函数内.
 
 ## useRef
 
@@ -256,6 +268,8 @@ function ChatRoom({ roomId }) {
 
 ## 性能优化
 
+### memo
+
 **memo**
 
 ```typescript
@@ -267,6 +281,8 @@ export const Component = memo(() => {
 });
 ```
 
+### useMemo
+
 **useMemo**
 
 ```typescript
@@ -276,6 +292,8 @@ const visibleTodos = useMemo(() => {
   return getFilteredTodos(todos, filter);
 }, [todos, filter]);
 ```
+
+### useCallback
 
 **useCallback**
 
