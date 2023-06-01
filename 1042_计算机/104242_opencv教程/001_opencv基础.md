@@ -7,6 +7,7 @@
 ```bash
 # conda 不好安装, 故使用 pip
 pip install opencv-python
+conda install opencv -c conda-forge
 ```
 
 **代码提示**

@@ -26,6 +26,15 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
+### linux
+
+**debian**
+
+```bash
+sudo apt install python3 -y
+sudo apt install python3-pip -y
+```
+
 ## IDE/文本编辑器
 
 - pycharm;
