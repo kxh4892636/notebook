@@ -46,8 +46,6 @@ npm install --save-dev nodemon
 }
 ```
 
-// NOTE pm2
-
 ### pm2
 
 **安装**
@@ -93,91 +91,6 @@ pm2 flush
 # 重载所有日志
 pm2 reloadLogs
 ```
-
-## node + express + prisma + ts
-
-**初始化 npm**
-
-```bash
-npm init -y
-```
-
-**安装 npm 依赖**
-
-```bash
-npm instal @prisma/client cors express multer
-npm install --save-dev @types/cors @types/express @types/multer @types/node nodemon prisma ts-node typescript
-```
-
-**配置 prisma**
-
-[[320_prisma教程]]
-
-**配置 ts**
-
-```bash
-npx tsc --init
-```
-
-```json
-{
-  "compilerOptions": {
-    "target": "ES6",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "allowJs": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
-  },
-  "ts-node": {
-    "esm": true,
-    "experimentalSpecifierResolution": "node"
-  }
-}
-```
-
-**配置 package.json**
-
-```json
-{
-  "name": "server",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "@prisma/client": "^4.10.1",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "multer": "^1.4.5-lts.1"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "@types/express": "^4.17.17",
-    "@types/multer": "^1.4.7",
-    "@types/node": "^18.13.0",
-    "nodemon": "^2.0.20",
-    "prisma": "^4.10.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc",
-    "start": "nodemon src/index.ts"
-  }
-}
-```
-
-**配置项目结构**
-
-- src;
-  - index.ts;
-  - routes;
-  - controllers;
-  - services;
 
 ## ESM 项目配置
 

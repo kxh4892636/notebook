@@ -35,9 +35,9 @@ npm install immer
 /**
  * @description: immer 最重要的函数
  * @param baseState: 起始状态
- * @param recipe: 修改操作
+ * @param recipe: 修改操作, draftState 恒为第一个参数, baseState 的代理
  */
-produce(baseState, recipe: (draftState) => void): nextState
+produce(baseState, recipe: (draftState, ...args) => void): nextState
 ```
 
 **示例**
@@ -52,6 +52,11 @@ const nextState = produce(baseState, (draftState) => {
 ### 柯里化 produce
 
 **工作原理**
+
+- 若直接传递 recipe 作为 produce() 第一个参数;
+- 创建一个函数, 将 recipe 应用于传递给函数的 baseState;
+  - 第一个参数为 baseState, recipe 中的 draftState 为其代理;
+  - 其余参数为 recipe 中的其余参数;
 
 ```typescript
 import produce from "immer";

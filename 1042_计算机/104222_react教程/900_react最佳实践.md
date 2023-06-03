@@ -10,7 +10,7 @@ id: 1a108025-b0cf-4062-8935-4097fd556546
 
 **常见场景**
 
-- 在使用 setTimeout, setInterval, Promise.then ,回调函数的场景下, 即延迟调用;
+- 在使用 setTimeout, setInterval, Promise.then, addEventListen, 回调函数的场景下, 即延迟调用;
 - 一定会存在闭包问题;
 
 **具体表现**
