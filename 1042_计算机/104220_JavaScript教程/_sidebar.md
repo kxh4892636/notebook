@@ -15,7 +15,7 @@
   - [170_事件.md](170_事件.md)
   - [180_动画和canvas.md](180_动画和canvas.md)
   - [190_表单脚本.md](190_表单脚本.md)
-  - [200_JavaScriptAPI.md](200_JavaScriptAPI.md)
+  - [200_JavaScript_API.md](200_JavaScript_API.md)
   - [240_网络请求和远程资源.md](240_网络请求和远程资源.md)
   - [250_客户端存储.md](250_客户端存储.md)
   - [900_js最佳实践.md](900_js最佳实践.md)

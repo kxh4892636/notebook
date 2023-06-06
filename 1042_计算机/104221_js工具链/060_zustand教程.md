@@ -70,7 +70,7 @@ const useBearStore = create<BearStore>((set) => ({
 
 ### immer
 
-[[320_immer教程#zustand]]
+[[070_immer教程#zustand]]
 
 ### 疑难杂症
 
