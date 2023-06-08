@@ -213,7 +213,7 @@ droptarget.addEventListener("drop", handleEvent);
 
 **放置触发顺序**
 
-- dragenter, dragover, drop/dragover 依次触发;
+- dragenter, dragover, drop/dragleave 依次触发;
 - 移动到放置目标上触发 dragenter 事件;
 - dragenter 触发后, 只要在放置范围内持续触发 dragover 事件;
 - 离开放置范围触发 dropleave 事件, 放置触发 drop 事件;
@@ -252,7 +252,8 @@ event.clearData("text"); //清除指定格式数据
 // 当前存储数据格式数组
 const types = event.types;
 
-// dropEffect 属性表示放置行为, 与 effectAllowed 属性连用, 在 dragenter 事件中使用
+// dropEffect 属性 与 effectAllowed 属性连用
+// dropEffect 属性表示放置行为, 在 dragenter 事件中使用
 // none 不可放置, 除文本框外的默认值
 // move, copy, link 依次为移动, 复制到放置对象, 导航到被拖动对象
 const dropEffect = dataTransfer.dropEffect;
@@ -340,10 +341,11 @@ n.onerror = () => console.log("Notification experienced an error!"); // 报错�
 ```typescript
 // 返回微秒级别的浮点值
 // 采用相对度量, 从执行上下文创建从 0 计时
-const t0 = performance.now();
-
-// 全局上下文基准值
+const relativeTimestamp = performance.now();
+// 当前上下文创建时的全局上下文基准值
 const origin = performance.timeOrigin;
+// 绝对度量
+const absoluteTimestamp = performance.timeOrigin + relativeTimestamp;
 ```
 
 ### Performance Timeline API

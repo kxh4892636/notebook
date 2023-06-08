@@ -1,3 +1,6 @@
+---
+id: 4c0f4552-7dab-42c3-a8fc-845dc445e3a4
+---
 # JSON
 
 ## 语法
@@ -66,6 +69,7 @@ let book = {
 };
 let jsonText = JSON.stringify(book);
 // parse() 把 JSON 字符串转换为 js 对象
+// stringify() 和 parse() 连用常用于深拷贝
 let bookCopy = JSON.parse(jsonText);
 ```
 
