@@ -220,7 +220,7 @@ if (drawing.getContext) {
   // ...
   // 旋转
   context.rotate(1); // 围绕原点旋转 1 弧度
-  context.rotate(2, 0.5); // x 方向乘 2, y 方向乘 0.5
+  context.scale(2, 0.5); // x 方向乘 2, y 方向乘 0.5
   context.translate(10, 20); // 移动原点至 (10, 20)
   // 进行矩阵变化
   context.transform(1, 2, 1, 2, 1, 1); // 依次为 m1_1, m1_2, m2_1, m2_2, dx, dy
