@@ -1,16 +1,27 @@
 ---
 id: fbbd256b-63d9-46ea-bdaa-6cf91284225e
 ---
+
 # conda 教程
 
 ## 入门
 
-**安装**
+### 安装
+
+**windows**
 
 - [安装地址](https://github.com/conda-forge/miniforge)
 - 选择对应版本;
 - 安装即可;
 - 建议添加环境变量, 虽然 conda 不建议, 但我不听;
+
+**linux**
+
+```bash
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh"
+bash Miniforge3-Linux-x86_64.sh
+rm -f Miniforge3-Linux-x86_64.sh
+```
 
 ## 常用命令
 

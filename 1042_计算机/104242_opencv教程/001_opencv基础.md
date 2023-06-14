@@ -2,12 +2,20 @@
 
 ## opencv 入门
 
-**安装**
+### 安装
+
+**windows**
 
 ```bash
 # conda 不好安装, 故使用 pip
 pip install opencv-python
 conda install opencv -c conda-forge
+```
+
+**linux**
+
+```bash
+sudo apt install python3-opencv
 ```
 
 **代码提示**

@@ -10,3 +10,30 @@
 # 前一条执行成功才会执行下一条
 cd client && npm start
 ```
+
+## debian
+
+### 命令
+
+**换源**
+
+```json
+// 打开 /etc/apt/sources.list, 覆盖原有内容
+deb http://deb.debian.org/debian bullseye main contrib non-free
+deb-src http://deb.debian.org/debian bullseye main contrib non-free
+
+deb http://deb.debian.org/debian bullseye-updates main contrib non-free
+deb-src http://deb.debian.org/debian bullseye-updates main contrib non-free
+
+deb http://deb.debian.org/debian bullseye-backports main contrib non-free
+deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
+
+deb http://security.debian.org/debian-security/ bullseye-security main contrib non-free
+deb-src http://security.debian.org/debian-security/ bullseye-security main contrib non-free
+```
+
+**更新**
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
