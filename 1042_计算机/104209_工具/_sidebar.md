@@ -6,3 +6,4 @@
   - [020_wsl教程.md](020_wsl教程.md)
   - [030_nginx教程.md](030_nginx教程.md)
   - [040_git教程.md](040_git教程.md)
+  - [050_nvm教程.md](050_nvm教程.md)
