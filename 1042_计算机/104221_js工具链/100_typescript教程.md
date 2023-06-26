@@ -532,6 +532,16 @@ export type CaseListData = {
 };
 ```
 
+## 配置文件
+
+### node
+
+[[900_项目配置#typescript 配置]]
+
+### react
+
+[[021_vite教程#react]]
+
 ## ts 常见类型
 
 ### JavaScript

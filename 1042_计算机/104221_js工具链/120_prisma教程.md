@@ -56,8 +56,6 @@ npx prisma migrate dev --name init
 npx prisma generate
 ```
 
-![prisma generate 机制](images/2023-02-23-20-12-22.png)
-
 ### 根据已有数据库配置
 
 **基础依赖**
@@ -73,8 +71,6 @@ npx prisma generate
 # 根据数据库配置 schema.prisma 文件
 npx prisma db pull
 ```
-
-![prisma db pull 机制](images/2023-02-23-20-15-22.png)
 
 **创建 migration 初始记录**
 

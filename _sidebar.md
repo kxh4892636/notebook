@@ -1,8 +1,6 @@
 # note
 
 - folds
-  - [.git](.git/_sidebar.md)
-  - [.obsidian](.obsidian/_sidebar.md)
   - [1010_中转](1010_中转/_sidebar.md)
   - [1020_日记](1020_日记/_sidebar.md)
   - [1028_常识](1028_常识/_sidebar.md)

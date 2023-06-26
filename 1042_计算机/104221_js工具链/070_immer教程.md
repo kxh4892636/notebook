@@ -23,8 +23,6 @@ npm install immer
 - 你可以修改 draft;
 - immer 根据 draft 形成 nextState;
 
-![工作原理](images/2023-02-09-20-58-44.png)
-
 ## produce
 
 ### produce

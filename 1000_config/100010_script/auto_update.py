@@ -42,7 +42,7 @@ def auto_update_sidebar(root_dir: str) -> None:
         if folds:
             content = list()
             for fold in folds:
-                if fold == 'images' or '1000' in fold:
+                if fold == 'images' or '1000' in fold or '.git' in fold or '.obsidian' in fold:
                     continue
                 fold_dir = os.path.join(
                     fold, '_sidebar.md').replace('\\', '/')
