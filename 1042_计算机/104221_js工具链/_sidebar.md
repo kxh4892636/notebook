@@ -20,4 +20,5 @@
   - [150_husky教程.md](150_husky教程.md)
   - [160_lint-staged教程.md](160_lint-staged教程.md)
   - [170_commitlint教程.md](170_commitlint教程.md)
-  - [900_monorepo配置.md](900_项目配置.md)
+  - [180_zod教程.md](180_zod教程.md)
+  - [900_项目配置.md](900_项目配置.md)

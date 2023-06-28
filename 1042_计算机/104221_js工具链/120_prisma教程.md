@@ -197,18 +197,14 @@ const fileInfo = await prisma.data.findUnique({
 // 升序查询
 const posts = await prisma.post.findMany({
   orderBy: {
-    author: {
-      email: "asc",
-    },
+    title: "asc",
   },
 });
 // 降序查询前 10 个
 const getActiveUsers = await prisma.user.findMany({
   take: 10,
   orderBy: {
-    posts: {
-      _count: "desc",
-    },
+    title: "desc",
   },
 });
 ```
