@@ -1,9 +1,9 @@
 # css教程
 
 - files
-  - [010_css_introduction.md](010_css_introduction.md)
-  - [020_selectors.md](020_selectors.md)
-  - [030_specificity_inheritance_and_cascade.md](030_specificity_inheritance_and_cascade.md)
+  - [010_css绪论.md](010_css绪论.md)
+  - [020_选择器.md](020_选择器.md)
+  - [030_层叠_优先级和继承.md](030_层叠_优先级和继承.md)
   - [040_values_units_and_functions.md](040_values_units_and_functions.md)
   - [045_css_properties.md](045_css_properties.md)
   - [050_fonts.md](050_fonts.md)
