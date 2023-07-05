@@ -4,7 +4,7 @@
   - [010_css绪论.md](010_css绪论.md)
   - [020_选择器.md](020_选择器.md)
   - [030_层叠_优先级和继承.md](030_层叠_优先级和继承.md)
-  - [040_values_units_and_functions.md](040_values_units_and_functions.md)
+  - [040_类型_变量.md](040_类型_变量.md)
   - [045_css_properties.md](045_css_properties.md)
   - [050_fonts.md](050_fonts.md)
   - [060_text.md](060_text.md)
